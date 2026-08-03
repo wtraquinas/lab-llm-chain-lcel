@@ -2,6 +2,72 @@
 
 # Lab | Simple LLM App with LCEL
 
+<br>
+
+---
+## Deployment on Render
+
+https://lab-llmchain-lcel.onrender.com
+
+
+<br>
+
+---
+
+
+## Some problems I run on this LAB with Langsmith: 
+
+1. I setup my Langsmith/Langchain account for EU, so many things changed in order to reach Langsmith:  
+
+
+```python
+import os
+from google.colab import userdata
+
+os.environ["LANGSMITH_TRACING"] = "true"
+os.environ["LANGSMITH_ENDPOINT"] = "https://eu.api.smith.langchain.com"
+os.environ["LANGSMITH_API_KEY"] = userdata.get('LANGCHAIN_API_KEY')  # the NEW rotated key
+os.environ["LANGSMITH_PROJECT"] = "Ironhack First app"
+
+# also set legacy names in case an older SDK version still checks these
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_ENDPOINT"] = "https://eu.api.smith.langchain.com"
+os.environ["LANGCHAIN_API_KEY"] = os.environ["LANGSMITH_API_KEY"]
+os.environ["LANGCHAIN_PROJECT"] = "Ironhack First app"
+
+os.environ["OPENAI_API_KEY"] = userdata.get('OPENAI_API_KEY')
+
+
+### --------- ###
+### --------- ###
+from langchain_openai import ChatOpenAI
+from langchain_core.messages import HumanMessage, SystemMessage
+
+model = ChatOpenAI(model="gpt-3.5-turbo")
+
+messages = [
+    SystemMessage(content="Translate the following from English into Italian"),
+    HumanMessage(content="My tailor is rich"),
+]
+
+model.invoke(messages)
+
+
+```
+
+
+---
+
+2. Also,  LangServe has been deprecated since Nov 18, 2024, and LangChain recommends using LangGraph Platform instead for new projects. And the GitHub repo itself was archived by the owner on May 5, 2026, making it read-only — meaning it's no longer maintained at all, even for community bug fixes going forward. If you're following an older tutorial (like the LangChain quickstart), it's worth knowing this part is now legacy.
+
+Hence, decision to host on Render.
+
+<br>
+
+---
+
+---
+
 ## Getting Started
 
 Follow the instructions provided in the notebook.
