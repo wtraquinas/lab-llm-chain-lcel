@@ -60,7 +60,7 @@ model.invoke(messages)
 
 2. Also,  LangServe has been deprecated since Nov 18, 2024, and LangChain recommends using LangGraph Platform instead for new projects. And the GitHub repo itself was archived by the owner on May 5, 2026, making it read-only — meaning it's no longer maintained at all, even for community bug fixes going forward. If you're following an older tutorial (like the LangChain quickstart), it's worth knowing this part is now legacy.
 
-Hence, decision to host on Render.
+Hence, decision to host on Render: https://lab-llmchain-lcel.onrender.com
 
 <br>
 
